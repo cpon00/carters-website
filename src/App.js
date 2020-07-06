@@ -4,7 +4,6 @@ import './App.css'
 import { makeStyles } from '@material-ui/core/styles'
 
 import Resume from './pages/Resume'
-import { lightBlue } from '@material-ui/core/colors'
 
 const useStyles = makeStyles(theme => ({
   root: {
