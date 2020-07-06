@@ -5,6 +5,7 @@ import Avatar from '@material-ui/core/Avatar'
 import LinkedInIcon from '@material-ui/icons/LinkedIn'
 import GitHubIcon from '@material-ui/icons/GitHub'
 import TwitterIcon from '@material-ui/icons/Twitter'
+import MailIcon from '@material-ui/icons/Mail'
 
 import { makeStyles } from '@material-ui/core/styles'
 import clsx from 'clsx'
@@ -19,12 +20,7 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'row',
     height: theme.spacing(36),
-    backgroundColor: 'lightgreen'
-  },
-
-  bottomPanel: {
-    height: theme.spacing(36),
-    backgroundColor: 'lightblue'
+    backgroundColor: 'black'
   },
 
   topSection: {
@@ -32,7 +28,7 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
-    backgroundColor: 'purple'
+    backgroundColor: '#4293f5'
   },
 
   picture: {
@@ -53,14 +49,16 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 2,
     display: 'flex',
     flexDirection: 'column',
-    backgroundColor: 'pink'
+    backgroundColor: 'orange'
   },
 
   socials: {
     flexGrow: 1,
     display: 'flex',
     marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(1)
+    marginRight: theme.spacing(1),
+    maxheight: theme.spacing(7),
+    maxWidth: theme.spacing(32)
   },
 
   socialIcons: {
@@ -71,6 +69,8 @@ const useStyles = makeStyles(theme => ({
   },
 
   bio: {
+    display: 'flex',
+    flexDirection: 'row',
     fontSize: theme.spacing(12),
     height: theme.spacing(30)
   },
@@ -79,8 +79,22 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'row'
   },
+
   button: {
     marginLeft: theme.spacing(1)
+  },
+
+  bottomPanel: {
+    display: 'flex',
+    justifyContent: 'center'
+  },
+
+  textSection: {
+    display: 'flex',
+    backgroundColor: 'white',
+    minHeight: theme.spacing(100),
+    minWidth: theme.spacing(150),
+    justifyContent: 'center'
   }
 }))
 
@@ -98,7 +112,9 @@ const Resume = props => {
         {/* BIO SECTION */}
 
         <div className={clsx(classes.topSection, classes.topCenterSection)}>
-          <div className={classes.bio}> Carter Pon</div>
+          <div className={classes.bio}>
+            <div>Carter Pon</div>
+          </div>
 
           {/* TAB BUTTONS */}
 
@@ -143,9 +159,14 @@ const Resume = props => {
               //   onClick={(window.location.href = 'https://twitter.com/cpon00')}
             />
           </Button>
+          <Button>
+            <MailIcon className={classes.socialIcons} />
+          </Button>
         </div>
       </div>
-      <div className={classes.bottomPanel}>BOTTOM</div>
+      <div className={classes.bottomPanel}>
+        <div className={classes.textSection}>TEXT</div>
+      </div>
     </div>
   )
 }
