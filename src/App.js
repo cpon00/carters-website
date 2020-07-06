@@ -1,14 +1,24 @@
-import React from 'react';
-import './App.css';
-import Paper from '@material-ui/core/Paper'
-import Button from '@material-ui/core/Button'
+import React from 'react'
+import './App.css'
 
-function App() {
+import { makeStyles } from '@material-ui/core/styles'
+
+import Resume from './pages/Resume'
+import { lightBlue } from '@material-ui/core/colors'
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    backgroundColor: 'red'
+  }
+}))
+
+const App = props => {
+  const classes = useStyles(props)
   return (
-    <Button variant='contained' color='primary'>
-      Test
-    </Button>
-  );
+    <div className={classes.root}>
+      <Resume />
+    </div>
+  )
 }
 
-export default App;
+export default App
