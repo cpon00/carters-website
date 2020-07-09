@@ -11,9 +11,26 @@ import GitHubIcon from '@material-ui/icons/GitHub'
 import TwitterIcon from '@material-ui/icons/Twitter'
 import MailIcon from '@material-ui/icons/Mail'
 
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles, createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
 
 import Resume from './pages/Resume'
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      light: '#757ce8',
+      main: '#3f50b5',
+      dark: 'black',
+      contrastText: '#fff'
+    },
+    secondary: {
+      light: '#757ce8',
+      main: '#3f50b5',
+      dark: '#002884',
+      contrastText: '#fff'
+    }
+  }
+})
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -21,11 +38,15 @@ const useStyles = makeStyles(theme => ({
     height: '100vh'
   },
 
+  primaryColor: {
+    color: theme.palette.primary.dark
+  },
+
   topPanel: {
     display: 'flex',
     flexDirection: 'row',
     height: theme.spacing(36),
-    backgroundColor: 'black'
+    backgroundColor: theme.palette.primary.dark
   },
 
   topSection: {
@@ -33,7 +54,7 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
-    backgroundColor: '#3ae4e4'
+    backgroundColor: theme.palette.primary.dark
   },
 
   picture: {
@@ -54,7 +75,7 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 2,
     display: 'flex',
     flexDirection: 'column',
-    backgroundColor: '#3ae4e4',
+    backgroundColor: theme.palette.primary.dark,
     color: 'black'
   },
 
@@ -88,7 +109,7 @@ const useStyles = makeStyles(theme => ({
 
   button: {
     marginLeft: theme.spacing(1),
-    backgroundColor: '#686280',
+    backgroundColor: theme.palette.primary.dark,
     color: 'white'
   },
 
@@ -112,71 +133,73 @@ const useStyles = makeStyles(theme => ({
 const App = props => {
   const classes = useStyles(props)
   return (
-    <div className={classes.root}>
-      <div className={classes.topPanel}>
-        {/* PICTURE */}
+    <ThemeProvider theme={theme}>
+      <div className={classes.root} theme={theme}>
+        <div className={classes.topPanel}>
+          {/* PICTURE */}
 
-        <div className={clsx(classes.topSection, classes.picture)}>
-          <Avatar className={classes.avatar} alt="me" src="/portrait.jpg" />
-        </div>
-
-        {/* BIO SECTION */}
-
-        <div className={clsx(classes.topSection, classes.topCenterSection)}>
-          <div className={classes.bio}>
-            <div>Carter Pon</div>
+          <div className={clsx(classes.topSection, classes.picture)}>
+            <Avatar className={classes.avatar} alt="me" src="/portrait.jpg" />
           </div>
 
-          {/* TAB BUTTONS */}
+          {/* BIO SECTION */}
 
-          <div className={classes.tabs}>
-            <Button className={classes.button} variant="contained">
-              <HomeIcon />
+          <div className={clsx(classes.topSection, classes.topCenterSection)}>
+            <div className={classes.bio}>
+              <div>Carter Pon</div>
+            </div>
+
+            {/* TAB BUTTONS */}
+
+            <div className={classes.tabs}>
+              <Button className={classes.button} variant="contained">
+                <HomeIcon />
+              </Button>
+              <Button className={classes.button} variant="contained">
+                Experience
+              </Button>
+              <Button className={classes.button} variant="contained">
+                PROJECTS
+              </Button>
+              <Button className={classes.button} variant="contained">
+                OTHER INTERESTS
+              </Button>
+            </div>
+          </div>
+
+          {/* SOCIALS */}
+
+          <div className={clsx(classes.topSection, classes.socials)}>
+            <Button>
+              <LinkedInIcon
+                className={classes.socialIcons}
+                //   onClick={(window.location.href = 'https://www.linkedin.com/in/cpon/')}
+              />
             </Button>
-            <Button className={classes.button} variant="contained">
-              Experience
+            <Button>
+              <GitHubIcon
+                className={classes.socialIcons}
+                //   onClick={(window.location.href = 'https://github.com/cpon00')}
+              />
             </Button>
-            <Button className={classes.button} variant="contained">
-              PROJECTS
+            <Button>
+              <TwitterIcon
+                className={classes.socialIcons}
+                //   onClick={(window.location.href = 'https://twitter.com/cpon00')}
+              />
             </Button>
-            <Button className={classes.button} variant="contained">
-              OTHER INTERESTS
+            <Button>
+              <MailIcon className={classes.socialIcons} />
             </Button>
           </div>
         </div>
-
-        {/* SOCIALS */}
-
-        <div className={clsx(classes.topSection, classes.socials)}>
-          <Button>
-            <LinkedInIcon
-              className={classes.socialIcons}
-              //   onClick={(window.location.href = 'https://www.linkedin.com/in/cpon/')}
-            />
-          </Button>
-          <Button>
-            <GitHubIcon
-              className={classes.socialIcons}
-              //   onClick={(window.location.href = 'https://github.com/cpon00')}
-            />
-          </Button>
-          <Button>
-            <TwitterIcon
-              className={classes.socialIcons}
-              //   onClick={(window.location.href = 'https://twitter.com/cpon00')}
-            />
-          </Button>
-          <Button>
-            <MailIcon className={classes.socialIcons} />
-          </Button>
+        <div className={classes.bottomPanel}>
+          <div className={classes.textSection}>
+            <Resume />
+          </div>
         </div>
       </div>
-      <div className={classes.bottomPanel}>
-        <div className={classes.textSection}>
-          <Resume />
-        </div>
-      </div>
-    </div>
+    </ThemeProvider>
   )
 }
 
