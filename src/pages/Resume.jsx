@@ -1,24 +1,21 @@
-import React from 'react'
-import Button from '@material-ui/core/Button'
+import React from "react";
+// import { makeStyles } from '@material-ui/core/styles'
 
-import { makeStyles } from '@material-ui/core/styles'
-import clsx from 'clsx'
+// const useStyles = makeStyes((thme) => ({
+//   root: {
+//     backgroundColo': "lightg'ey",
+//     heigh': "10'h",
+//  },
+// ));
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    backgroundColor: 'lightgrey',
-    height: '100vh'
-  }
-}))
-
-const Resume = props => {
-  const classes = useStyles(props)
+const Resume = (props) => {
+  // const classes = useStyles(props);
   return (
     <div>
       <p>Hi!</p>
       <p>It really do be like that tho</p>
     </div>
-  )
-}
+  );
+};
 
-export default Resume
+export default Resume;
