@@ -18,18 +18,14 @@ const useStyles = makeStyles(theme => ({
     height: '100vh'
   },
 
-  primaryColor: {
-    color: theme.palette.primary.dark
-  },
-
-  topPanel: {
+  header: {
     display: 'flex',
     flexDirection: 'row',
     height: theme.spacing(36),
     backgroundColor: theme.palette.primary.main
   },
 
-  topSection: {
+  sideSection: {
     flexGrow: 1,
     display: 'flex',
     marginLeft: theme.spacing(1),
@@ -37,7 +33,7 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.primary.main
   },
 
-  picture: {
+  avatarSection: {
     display: 'flex',
     justifyContent: 'center',
     flexGrow: 0.1
@@ -51,12 +47,32 @@ const useStyles = makeStyles(theme => ({
     alignSelf: 'center'
   },
 
-  topCenterSection: {
+  centerSection: {
     flexGrow: 2,
     display: 'flex',
     flexDirection: 'column',
     backgroundColor: theme.palette.primary.main,
     color: 'black'
+  },
+
+  bio: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignContent: 'center',
+    fontSize: theme.spacing(12),
+    height: theme.spacing(30)
+  },
+
+  tabs: {
+    display: 'flex',
+    flexDirection: 'row'
+  },
+
+  button: {
+    marginLeft: theme.spacing(1),
+    backgroundColor: theme.palette.primary.dark,
+    color: 'white'
   },
 
   socials: {
@@ -73,24 +89,6 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'center',
     alignSelf: 'center',
     fontSize: theme.spacing(6)
-  },
-
-  bio: {
-    display: 'flex',
-    flexDirection: 'row',
-    fontSize: theme.spacing(12),
-    height: theme.spacing(30)
-  },
-
-  tabs: {
-    display: 'flex',
-    flexDirection: 'row'
-  },
-
-  button: {
-    marginLeft: theme.spacing(1),
-    backgroundColor: theme.palette.primary.dark,
-    color: 'white'
   },
 
   bottomPanel: {
@@ -110,19 +108,19 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const TopPanel = props => {
+const Header = props => {
   const classes = useStyles(props)
   return (
-    <div className={classes.topPanel}>
+    <div className={classes.header}>
       {/* PICTURE */}
 
-      <div className={clsx(classes.topSection, classes.picture)}>
+      <div className={clsx(classes.sideSection, classes.avatarSection)}>
         <Avatar className={classes.avatar} alt="me" src="/portrait.jpg" />
       </div>
 
       {/* BIO SECTION */}
 
-      <div className={clsx(classes.topSection, classes.topCenterSection)}>
+      <div className={clsx(classes.sideSection, classes.centerSection)}>
         <div className={classes.bio}>
           <div>Carter Pon</div>
         </div>
@@ -130,16 +128,16 @@ const TopPanel = props => {
         {/* TAB BUTTONS */}
 
         <div className={classes.tabs}>
-          <Button className={classes.button} variant="contained">
+          <Button className={classes.button} variant="contained" href="/">
             <HomeIcon />
           </Button>
-          <Button className={classes.button} variant="contained">
+          <Button className={classes.button} variant="contained" href="./experience">
             Experience
           </Button>
-          <Button className={classes.button} variant="contained">
+          <Button className={classes.button} variant="contained" href="./projects">
             PROJECTS
           </Button>
-          <Button className={classes.button} variant="contained">
+          <Button className={classes.button} variant="contained" href="./other-interests">
             OTHER INTERESTS
           </Button>
         </div>
@@ -147,31 +145,40 @@ const TopPanel = props => {
 
       {/* SOCIALS */}
 
-      <div className={clsx(classes.topSection, classes.socials)}>
+      <div className={clsx(classes.sideSection, classes.socials)}>
         <Button>
           <LinkedInIcon
             className={classes.socialIcons}
+            variant="contained"
             //   onClick={(window.location.href = 'https://www.linkedin.com/in/cpon/')}
           />
         </Button>
         <Button>
           <GitHubIcon
             className={classes.socialIcons}
+            variant="contained"
             //   onClick={(window.location.href = 'https://github.com/cpon00')}
           />
         </Button>
         <Button>
           <TwitterIcon
             className={classes.socialIcons}
+            variant="contained"
+            target="_blank"
+            href="https://twitter.com/cpon00"
             //   onClick={(window.location.href = 'https://twitter.com/cpon00')}
           />
         </Button>
         <Button>
-          <MailIcon className={classes.socialIcons} />
+          <MailIcon
+            className={classes.socialIcons}
+            variant="contained"
+            href="mailto:cpon712@gmail.com"
+          />
         </Button>
       </div>
     </div>
   )
 }
 
-export default TopPanel
+export default Header

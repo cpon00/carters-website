@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 // import { makeStyles } from '@material-ui/core/styles'
 
 // const useStyles = makeStyes((thme) => ({
@@ -8,14 +8,13 @@ import React from "react";
 //  },
 // ));
 
-const Resume = (props) => {
+const Experience = props => {
   // const classes = useStyles(props);
   return (
     <div>
-      <p>Hi!</p>
-      <p>It really do be like that tho</p>
+      <p>Experience</p>
     </div>
-  );
-};
+  )
+}
 
-export default Resume;
+export default Experience
